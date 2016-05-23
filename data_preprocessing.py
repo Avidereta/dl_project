@@ -40,7 +40,7 @@ def ReadFilePaths(mode, city, subdir, file_type='.png'):
     
 # extract the polygons correspond to the label
 def ExtractPolygons(json_file, label='road'):
-    with open(json_file) as anno:    
+    with open(json_file) as anno:
         data = json.load(anno)
     return [d['polygon'] for d in data["objects"] if d['label'] == label]
 
@@ -58,32 +58,27 @@ def ExcludeRoadDisp(img, anno_img, pixels):
 def ExcludeNoise(img):
     pass
 
-def CropRoI(img_path):
-    
-    # original image
-    # -1 loads as-is so if it will be 3 or 4 channel as the original
-    img = cv2.imread(img_path, -1)
-    
-    y_shape,x_shape,_ = img.shape
-    
+def CropRoI(img):
+    y_shape, x_shape, _ = img.shape
+
     X = np.zeros(4)
     Y = np.zeros(4)
-    
+
     #top left
-    X[0], Y[0] = x_shape // 3, y_shape // 3
+    X[0], Y[0] = x_shape // 4, y_shape // 3
     
     #bottom left
     X[1], Y[1] = 0, y_shape
     
     #bottom right
     X[2], Y[2] = x_shape, Y[1]
-    
+
     #top right
-    X[3], Y[3] = 9 * x_shape // 10, Y[0]
+    X[3], Y[3] = 4 * x_shape // 5, Y[0]
     
     # mask defaulting to black for 3-channel and transparent for 4-channel
     # (of course replace corners with yours)
-    mask = np.zeros(img.shape, dtype=np.uint8)
+    mask = np.zeros(img.shape[:2], dtype=np.uint8)
     roi_corners = np.array([zip(X, Y)], dtype=np.int32)
     # fill the ROI so it doesn't get wiped out when the mask is applied
     channel_count = img.shape[2]  # i.e. 3 or 4 depending on your image
@@ -91,7 +86,7 @@ def CropRoI(img_path):
     cv2.fillPoly(mask, roi_corners, ignore_mask_color)
 
     # apply the mask
-    masked_image = cv2.bitwise_and(img, mask)
+    masked_image = cv2.bitwise_and(img, img, mask=mask)
 
     # save the result
     #cv2.imwrite('image_masked.png', masked_image)
