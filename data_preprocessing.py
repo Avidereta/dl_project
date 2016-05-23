@@ -56,6 +56,8 @@ def ExcludeRoadDisp(img, anno_img, pixels):
 
     return masked_img
 
+def ExcludeNoise(img):
+    pass
 
 def CropRoI(img_path):
     
@@ -99,8 +101,31 @@ def CropRoI(img_path):
 
 
 def Plot(img):
-    plt.figure(figsize=(10,5))
+    plt.figure(figsize=(15,7))
     plt.imshow(img)
+
+    
+def VisualPredDisp (pred_disp, disp_map, img):
+    """
+    Input:
+	pred_disp -- value of predicted disparity
+	disp_map -- disparity disp_map
+	img
+    Output:
+	vis_img -- img for visualization with highlighted areas
+    """
+    
+    error = pred_disp * 0.1
+    color = [128,64,128]
+    vis_img = img.copy()
+    x = np.arange(disp_map.shape[1])
+    y = np.arange(disp_map.shape[0])
+    
+    for i,j in itertools.product(y,x):
+        if pred_disp - error <= disp_map[i,j,0] <= pred_disp + error:
+            vis_img[i,j,:] = color
+           
+    return vis_img
 
 
 class TestDataLoading(unittest.TestCase):
