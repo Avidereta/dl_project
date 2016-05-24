@@ -11,7 +11,6 @@ import itertools
 from collections import defaultdict
 import unittest
 from matplotlib import pyplot as plt
-from scipy.misc import imread, imresize
 
 from path_constants import CITYSCAPESPATH
 
@@ -92,12 +91,6 @@ def CropRoI(img):
     return masked_image
 
 
-def proportional_resize(img, num_pixel = 50000):
-    h, w = img.shape[:2]
-    k = np.sqrt(float(num_pixel) / (h * w))
-    return imresize(img, (int(k * h), int(k * w)))
-
-
 def prepare_dataset(data):
     """
     data --- list of tuples [(image, segmented, disparities)]
@@ -110,7 +103,7 @@ def prepare_dataset(data):
         disp = CropRoI(disp)
         disp = ExcludeRoadDisp(disp, segm, [(128, 64, 128), (0, 0, 0)])
 
-        yield proportional_resize(img), disp.max()
+        yield img, disp.max()
 
 
 def Plot(img):
