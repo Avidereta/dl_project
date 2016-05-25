@@ -12,6 +12,7 @@ from collections import defaultdict
 import unittest
 from matplotlib import pyplot as plt
 from scipy.misc import imread, imresize
+from multiprocessing import Pool
 
 from path_constants import CITYSCAPESPATH
 
@@ -98,23 +99,32 @@ def proportional_resize(img, num_pixel = 50000):
     return imresize(img, (int(k * h), int(k * w)))
 
 
-def prepare_dataset(data, remove_road=False):
+def prepare_observation(args):
+    img, segm, disp = args[0]
+    remove_road = args[1]
+    
+    img = cv2.imread(img)
+    segm = cv2.imread(segm)
+    disp = cv2.imread(disp)
+
+    disp = CropRoI(disp)
+    disp = ExcludeRoadDisp(disp, segm, [(128, 64, 128), (0, 0, 0)])
+    
+    if remove_road:
+        img = CropRoI(img)
+        img = ExcludeRoadDisp(img, segm, [(128, 64, 128), (0, 0, 0)])
+
+    return proportional_resize(img), proportional_resize(segm), disp.max()
+
+
+def prepare_dataset(data, remove_road=False, n_jobs=4):
     """
     data --- list of tuples [(image, segmented, disparities)]
     """
-    for (img, segm, disp) in data:
-        img = cv2.imread(img)
-        segm = cv2.imread(segm)
-        disp = cv2.imread(disp)
-
-        disp = CropRoI(disp)
-        disp = ExcludeRoadDisp(disp, segm, [(128, 64, 128), (0, 0, 0)])
-        
-        if remove_road:
-            img = CropRoI(img)
-            img = ExcludeRoadDisp(img, segm, [(128, 64, 128), (0, 0, 0)])
-
-        yield proportional_resize(img), proportinal_resize(segm), disp.max()
+    
+    p = Pool(n_jobs)
+    
+    return p.map(prepare_observation, itertools.izip(data, itertools.cycle([remove_road])))
 
 
 def Plot(img):
