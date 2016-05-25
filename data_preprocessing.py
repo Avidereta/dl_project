@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
+import re
 import os
 import sys
 import cv2
@@ -37,7 +37,7 @@ def ReadFilePaths(mode, city, subdir, file_type='.png', disp=False):
     path_imgs = glob.glob(path_disp_dir + '/*' + file_type)
     path_imgs.sort()
     if disp:
-        print '({}, {}): number of pngs is {}'.format(mode,city, len(path_imgs))
+        print '({}, {}): number of pngs is {}'.format(mode, city, len(path_imgs))
     return path_imgs
 
     
@@ -98,7 +98,7 @@ def proportional_resize(img, num_pixel = 50000):
     return imresize(img, (int(k * h), int(k * w)))
 
 
-def prepare_dataset(data):
+def prepare_dataset(data, remove_road=False):
     """
     data --- list of tuples [(image, segmented, disparities)]
     """
@@ -109,14 +109,18 @@ def prepare_dataset(data):
 
         disp = CropRoI(disp)
         disp = ExcludeRoadDisp(disp, segm, [(128, 64, 128), (0, 0, 0)])
+        
+        if remove_road:
+            img = CropRoI(img)
+            img = ExcludeRoadDisp(img, segm, [(128, 64, 128), (0, 0, 0)])
 
-        yield proportional_resize(img), disp.max()
+        yield proportional_resize(img), proportinal_resize(segm), disp.max()
 
 
 def Plot(img):
     plt.figure(figsize=(10,5))
     plt.imshow(img)
-
+    
 
 class TestDataLoading(unittest.TestCase):
     """Здесь могли быть ваши юнит-тесты ;)"""
