@@ -10,17 +10,17 @@ import json
 import itertools
 from collections import defaultdict
 import unittest
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from scipy.misc import imread, imresize
 from multiprocessing import Pool
 
 from path_constants import CITYSCAPESPATH
 
 
-def get_cities(img_dir='disparity'):
+def get_cities(img_dir='disparity', modes=['train', 'test', 'val']):
     path_left_imgs = os.path.normpath(os.path.join(CITYSCAPESPATH, img_dir))
     cities = {mode: os.listdir(path_left_imgs + '/' + mode)
-                for mode in ['train', 'test', 'val']}
+                for mode in modes}
     return cities
 
 
