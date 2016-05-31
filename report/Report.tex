@@ -1,0 +1,1955 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+\usepackage[utf8]{inputenc}\usepackage{cmap}\usepackage[english]{babel}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{ulem} % ulem is needed to support strikethroughs (\sout)
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Report}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    \title{Disparity-Based Collision Avoidance System}
+    
+    \maketitle
+    
+    
+
+    
+
+Deep Learning Project
+
+Skoltech, Spring 2016
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Anastasia Makarova}
+\item
+  \emph{Mikhail Usvyatsov}
+\item
+  \emph{Mikhail Karasikov}
+\item
+  \emph{Daniil Merkulov}
+\end{itemize}
+
+    \section{Introduction}\label{introduction}
+
+    The goal of our project is to predict the distance to the nearest object
+on the road from a single image. Neural Networks are widely used in
+Advanced Driver Assistance Systems (ADAS) and this problem has direct
+application in Camera-Based Forward Collision Alert System.
+
+Ordinary, disparity map is built based on stereo pair and then camera
+parameters are neccessary for depth map building.
+
+    \begin{figure}[htbp]
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/disparity_scheme.png}
+    \end{center}
+\caption{}
+\end{figure}
+
+    We use semantic annotated data CityScapes and all intristic parameters
+are known, so the goal was to predict the robust maximum for disparity
+map, corresponded o the closest object on the road.
+
+    As long as we are interested only in objects on the way of the car, we
+work not only with the entire image, but also with its Region of
+Interest (RoI).
+
+    \section{Related work}\label{related-work}
+
+    There are several works related to the whole depth map prediction, based
+on Deep Learning. In
+\(\textit{'Depth Map Prediction from a Single Image using a Multi-Scale Deep Network', 2015}\)
+authors consider two steps (coarse-scale and fine-scale) NN Structure.
+The task of the coarse-scale network is to predict the overall depth map
+structure using a global view of the scene. After taking a global
+perspective, local refinements are made by fine-scale network.
+
+    \begin{figure}[htbp]
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/network_structure.png}
+    \end{center}
+\caption{}
+\end{figure}
+
+    The highly impressive result motivated us to use deep learning
+approaches for our task.
+
+    \section{Problem setting}\label{problem-setting}
+
+    The mathematical formulation of problem we deal with is the following.
+
+    \(X\) --- RGB pictures
+
+\(Y\) --- labels
+
+\(X^{n}=\left\{(x_1,y_1), \dots, (x_n,y_n)\right\}\) --- training set,
+where \(y_i\) is the maximum disparity for the picture \(x_i\).
+
+Find the algorithm \(a:\; X\to Y\), which generalizes the target
+function.
+
+If we replace \(y_i\) with the label of bin where \(y_i\) occurs we will
+get formulation of classification problem.
+
+    Classification statement has several advantages over regression:
+
+\begin{itemize}
+\item
+  Classification is easy to train than regression,
+\item
+  We can easily predict probability for each class (far, close, very
+  far, very close, etc.).
+\end{itemize}
+
+So, further we consider the problem with \(2\) or \(4\) classes.
+
+    \section{Training set preparation}\label{training-set-preparation}
+
+    Typical cityscapes data looks as follows.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} good example nmb\PYZus{}image = 41, 12}
+        \PY{n}{i} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{disp\PYZus{}imgs\PYZus{}paths}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{disp} \PY{o}{=} \PY{n}{cv2}\PY{o}{.}\PY{n}{imread}\PY{p}{(}\PY{n}{disp\PYZus{}imgs\PYZus{}paths}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+        \PY{n}{img} \PY{o}{=} \PY{n}{cv2}\PY{o}{.}\PY{n}{imread}\PY{p}{(}\PY{n}{imgs\PYZus{}paths}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+        \PY{n}{img\PYZus{}path} \PY{o}{=} \PY{n}{imgs\PYZus{}paths}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+        \PY{n}{anno\PYZus{}img} \PY{o}{=} \PY{n}{cv2}\PY{o}{.}\PY{n}{imread}\PY{p}{(}\PY{n}{anno\PYZus{}imgs\PYZus{}paths}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{Plot}\PY{p}{(}\PY{n}{img}\PY{p}{)}
+        \PY{n}{Plot}\PY{p}{(}\PY{n}{anno\PYZus{}img}\PY{p}{)}
+        
+        \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} All disparity\PYZsq{}\PYZsq{}\PYZsq{}}
+        \PY{n}{Plot}\PY{p}{(}\PY{n}{disp}\PY{p}{)}
+        
+        \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} Disparity in percentile \PYZsq{}\PYZsq{}\PYZsq{}}
+        \PY{n}{disp\PYZus{}perc} \PY{o}{=} \PY{n}{disp}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+        \PY{n}{disp\PYZus{}perc}\PY{p}{[}\PY{n}{disp} \PY{o}{\PYZlt{}} \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{disp}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+        \PY{n}{Plot}\PY{p}{(}\PY{n}{disp\PYZus{}perc}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_17_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_17_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_17_2.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_17_3.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    One can see that maximum disparity or any its percentile is meaningless
+for training set construction and physically trivial.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{img\PYZus{}perc} \PY{o}{=} \PY{n}{img}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+         \PY{n}{img\PYZus{}perc}\PY{p}{[}\PY{n}{disp} \PY{o}{\PYZlt{}} \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{disp}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{255}
+         \PY{n}{Plot}\PY{p}{(}\PY{n}{img\PYZus{}perc}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_19_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    So, first, the road obviously has to be removed and second, we extract
+target labels just for region of interest.
+
+    \subsection{RoI selection}\label{roi-selection}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{Plot}\PY{p}{(}\PY{n}{CropRoI}\PY{p}{(}\PY{n}{cv2}\PY{o}{.}\PY{n}{imread}\PY{p}{(}\PY{n}{img\PYZus{}path}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_22_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Exluding Road}\label{exluding-road}
+
+    We remove the road and car logo with the hood from the picture using
+fine segmentation provided by cityscapes team.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{Plot}\PY{p}{(}\PY{n}{img}\PY{p}{)}
+         \PY{n}{Plot}\PY{p}{(}\PY{n}{anno\PYZus{}img}\PY{p}{)}
+         \PY{n}{masked\PYZus{}img} \PY{o}{=} \PY{n}{ExcludeRoadDisp}\PY{p}{(}\PY{n}{img}\PY{p}{,} \PY{n}{anno\PYZus{}img}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{128}\PY{p}{,} \PY{l+m+mi}{64}\PY{p}{,} \PY{l+m+mi}{128}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         \PY{n}{Plot}\PY{p}{(}\PY{n}{masked\PYZus{}img}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_25_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_25_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_25_2.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    As a result, we got disparity distribution that makes sence and let the
+problem setting physically meaningful.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{max\PYZus{}disps\PYZus{}excl}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{without the road}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{max\PYZus{}disps}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{with the road}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} <matplotlib.legend.Legend at 0x4097fd0>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_27_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \section{Features as CNN output}\label{features-as-cnn-output}
+
+    When solving classification problem for pictures it's important to
+choose suitable feature space \(\mathscr{F}\).
+
+    As soon as we determined feature space \(\mathscr{F}\) and
+transformation \(f:\;X\to\mathscr{F}\), the problem we solve is
+simplified: find the algorithm \(a:\; f(x)\mapsto y\), which generalizes
+the target function.
+
+    Advances in deep learning provide methods to solve the initial problem
+straightway, but we couldn't train the CNN due to lack of video card
+memory on our instance.
+
+    So, we decided to use spread pre-trained CNN output as that feature
+transform \(f\).
+
+    We used VGG19 with reshaped input layer. Next we deleted everything
+after the convolutional layer and used that as features for the next
+processing. The structure of VGG19 that we used depictured further.
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/1.png}
+    \end{center}
+The result is a tensor of shape {[}512,
+4, 9{]} raveled to the vector of length \(18432\).
+
+    \section{Classification}\label{classification}
+
+    We applied different methods to solve classification problem.
+
+    Cityscapes training set has \(2975\) samples. It's possible to use extra
+train dataset of about \(20000\) samples (see below).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} (array([  16.,   49.,   88.,  163.,  109.,  125.,  120.,  113.,  127.,
+                 106.,  132.,  134.,  115.,  195.,  295.,  368.,  252.,  131.,
+                 125.,  212.]),
+         array([  14. ,   19.6,   25.2,   30.8,   36.4,   42. ,   47.6,   53.2,
+                  58.8,   64.4,   70. ,   75.6,   81.2,   86.8,   92.4,   98. ,
+                 103.6,  109.2,  114.8,  120.4,  126. ]),
+         <a list of 20 Patch objects>)
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_37_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}train}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} (2975, array([86, 93, 43, {\ldots}, 39, 97, 95], dtype=uint8))
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}129}]:} \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}130}]:} \PY{n}{bins}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}130}]:} [14.0, 57.0, 89.0, 103.0, 127.0]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}131}]:} \PY{n}{binary\PYZus{}bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                         \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                         \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}132}]:} \PY{n}{binary\PYZus{}bins}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}132}]:} [14.0, 89.0, 127.0]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}138}]:} \PY{n}{y\PYZus{}train\PYZus{}binary} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{binary\PYZus{}bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}val\PYZus{}binary} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{binary\PYZus{}bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}test\PYZus{}binary} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{binary\PYZus{}bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}139}]:} \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}140}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}140}]:} (array([ 739.,    0.,    0.,  715.,    0.,    0.,  721.,    0.,    0.,  800.]),
+           array([ 0. ,  0.3,  0.6,  0.9,  1.2,  1.5,  1.8,  2.1,  2.4,  2.7,  3. ]),
+           <a list of 10 Patch objects>)
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_45_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}141}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}train\PYZus{}binary}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}141}]:} (array([ 1454.,     0.,     0.,     0.,     0.,     0.,     0.,     0.,
+                      0.,  1521.]),
+           array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ]),
+           <a list of 10 Patch objects>)
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_46_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Binary classification}\label{binary-classification}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}142}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train\PYZus{}binary}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val\PYZus{}binary}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}142}]:} 0.878
+\end{Verbatim}
+        
+    Let's move on to multi-class.
+
+    \subsection{Multi-class}\label{multi-class}
+
+    \subsubsection{Simple models}\label{simple-models}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} 0.68000000000000005
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.preprocessing} \PY{k+kn}{import} \PY{n}{Normalizer}
+         
+         \PY{n}{normalizer} \PY{o}{=} \PY{n}{Normalizer}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}
+         \PY{n}{f1\PYZus{}train\PYZus{}normalized} \PY{o}{=} \PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}
+         \PY{n}{f1\PYZus{}val\PYZus{}normalized} \PY{o}{=} \PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.svm} \PY{k+kn}{import} \PY{n}{LinearSVC}
+         
+         \PY{n}{clf} \PY{o}{=} \PY{n}{LinearSVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{loss}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{squared\PYZus{}hinge}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dual}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crammer\PYZus{}singer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}66}]:} 0.67000000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}55}]:} 0.67000000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.svm} \PY{k+kn}{import} \PY{n}{SVC}
+         
+         \PY{n}{clf} \PY{o}{=} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}60}]:} 0.66800000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.svm} \PY{k+kn}{import} \PY{n}{SVC}
+         
+         \PY{n}{clf} \PY{o}{=} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}normalized}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}61}]:} 0.67400000000000004
+\end{Verbatim}
+        
+    \subsubsection{Boosting}\label{boosting}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.decomposition} \PY{k+kn}{import} \PY{n}{PCA}
+         
+         \PY{n}{pca} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{n}{n\PYZus{}components}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{)}
+         
+         \PY{n}{f1\PYZus{}train\PYZus{}pca} \PY{o}{=} \PY{n}{pca}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}normalized}\PY{p}{)}
+         \PY{n}{f1\PYZus{}val\PYZus{}pca} \PY{o}{=} \PY{n}{pca}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}normalized}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{GradientBoostingClassifier}
+         
+         \PY{n}{GradientBoostingClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train\PYZus{}pca}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val\PYZus{}pca}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} 0.59799999999999998
+\end{Verbatim}
+        
+    \subsubsection{Stacking}\label{stacking}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{k+kn}{from} \PY{n+nn}{stacking} \PY{k+kn}{import} \PY{n}{Stacking}
+         
+         \PY{n}{basic\PYZus{}wildfowl} \PY{o}{=} \PY{n}{Stacking}\PY{p}{(}\PY{n}{base\PYZus{}estimators}\PY{o}{=}\PY{p}{[}
+                 \PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{LinearSVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{loss}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{squared\PYZus{}hinge}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                         \PY{n}{dual}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crammer\PYZus{}singer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+                             \PY{n}{n\PYZus{}folds}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{extend\PYZus{}meta}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+         \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/lib64/python2.7/site-packages/sklearn/cross\_validation.py:69: DeprecationWarning: The indices parameter is deprecated and will be removed (assumed True) in 0.17
+  stacklevel=1)
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}76}]:} Stacking(base\_estimators=[(<bound method LogisticRegression.fit of LogisticRegression(C=0.01, class\_weight=None, dual=False, fit\_intercept=True,
+                   intercept\_scaling=1, max\_iter=100, multi\_class='ovr',
+                   penalty='l1', random\_state=None, solver='liblinear', tol=0.0001,
+                   verbose=0)>, <f{\ldots}on <lambda> at 0x1d848848>), (<function <lambda> at 0x1d848758>, <function <lambda> at 0x1d8488c0>)],
+              extend\_meta=False, meta\_fitter=None, n\_folds=5)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}77}]:} 0.68999999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}80}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}80}]:} 0.68999999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}81}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}81}]:} 0.68999999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}82}]:} 0.69799999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}100}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}100}]:} 0.70399999999999996
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}109}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}109}]:} 0.70199999999999996
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}143}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}143}]:} 0.70599999999999996
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}105}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.1}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}105}]:} 0.70399999999999996
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}83}]:} 0.69599999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}84}]:} 0.69399999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}85}]:} 0.67000000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}89}]:} 0.67000000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}92}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}92}]:} 0.69599999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}94}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}94}]:} 0.68999999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}95}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}95}]:} 0.69599999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{GradientBoostingClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}78}]:} 0.69399999999999995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{AdaBoostClassifier}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}101}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}101}]:} 0.67000000000000004
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}96}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}96}]:} 0.68799999999999994
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}97}]:} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit\PYZus{}meta}\PY{p}{(}\PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}97}]:} 0.68000000000000005
+\end{Verbatim}
+        
+    \subsubsection{With the road +
+segmentation}\label{with-the-road-segmentation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.005}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}val}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}65}]:} 0.67600000000000005
+\end{Verbatim}
+        
+    \subsubsection{Road deleted +
+segmentation}\label{road-deleted-segmentation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}103}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.001}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}val}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}103}]:} 0.66600000000000004
+\end{Verbatim}
+        
+    \subsubsection{Extra train dataset}\label{extra-train-dataset}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}161}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}161}]:} (array([    2.,    16.,   207.,   755.,  1324.,  1458.,  1633.,  1312.,
+                   1345.,  1370.,  1734.,  1487.,  1421.,  1543.,  1626.,  1843.,
+                   1958.,   818.,   455.,   665.]),
+           array([   0. ,    6.3,   12.6,   18.9,   25.2,   31.5,   37.8,   44.1,
+                    50.4,   56.7,   63. ,   69.3,   75.6,   81.9,   88.2,   94.5,
+                   100.8,  107.1,  113.4,  119.7,  126. ]),
+           <a list of 20 Patch objects>)
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_88_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}162}]:} \PY{n}{bins\PYZus{}extra} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}163}]:} \PY{n}{bins\PYZus{}extra}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}163}]:} [0.0, 46.0, 71.0, 94.0, 127.0]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}164}]:} \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins\PYZus{}extra}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins\PYZus{}extra}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins\PYZus{}extra}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}165}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}165}]:} (array([ 5612.,     0.,     0.,  5779.,     0.,     0.,  5556.,     0.,
+                      0.,  6025.]),
+           array([ 0. ,  0.3,  0.6,  0.9,  1.2,  1.5,  1.8,  2.1,  2.4,  2.7,  3. ]),
+           <a list of 10 Patch objects>)
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_92_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor} }]:} 0.70199999999999996
+\end{Verbatim}
+        
+    One can see that using extra train dataset doesn't increase result
+significantly. It may be due to the fact that we did't have fine
+segmentation for extra train samples. Instead we had to use coarse
+segmentation of poor quality.
+
+    \subsection{ANN}\label{ann}
+
+    We tried the structure that follows the structure of VGG19. The
+difference was to add elu nonlinearities to all the dense layers. The
+structure is the following:
+
+DenseLayer - 2048 units + elu
+
+DropoutLayer - 50\%
+
+DenseLayer - 2048 units + elu
+
+DropoutLayer - 50\%
+
+DenseLayer - 1024 units + elu
+
+DropoutLayer - 50\%
+
+DenseLayer - 512 units + elu
+
+DropoutLayer - 50\%
+
+DenseLayer - 256 units + elu
+
+DropoutLayer - 50\%
+
+DenseLayer - Softmax
+
+First we tried to add these layers to output of VGG19 features leayers.
+The problem was that it required much higher amount of memory and we
+couldn't use batches even of size 50. Next we used the described network
+as a separate classifier. It allowed us to use much higher batch sizes.
+
+Furthermore we faced the problem of overfitting. In order to deal with
+that we introduced l2 ans l1 regularizations to the loss.
+
+Talking about loss it is impotrant to mention that we decided to use
+categorical\_crossentropy as a loss function. It was motivated by the
+fact that we dealed with different sizes of classes (we started with
+binary classification problem and went to 4 classes classification).
+
+We had to play with regularization weights. Increasing and decreasing it
+we could limit overfiting and imrpove the loss on validation set.
+
+    \subsubsection{Network deleted road,
+classes}\label{network-deleted-road-classes}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data\PYZus{}rem\PYZus{}road.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+             \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{Seg\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}val}\PY{p}{,} \PY{n}{Seg\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{Seg\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+             
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{features\PYZus{}rem\PYZus{}road.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+             \PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{f1\PYZus{}test}\PY{p}{,} \PY{n}{f2\PYZus{}train}\PY{p}{,} \PY{n}{f2\PYZus{}val}\PY{p}{,} \PY{n}{f2\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+             
+         \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+         
+         \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+         \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+         \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+         
+         \PY{n}{input\PYZus{}layer} \PY{o}{=} \PY{n}{InputLayer}\PY{p}{(}\PY{p}{(}\PY{n+nb+bp}{None}\PY{p}{,} \PY{n}{f1\PYZus{}train}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ll1} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{input\PYZus{}layer}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{2048}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr1} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll1}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll2} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr1}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{2048}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr3} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll2}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll3} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr3}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{1024}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr4} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll3}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll4} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr4}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{512}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr5} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll4}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll5} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr5}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{256}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr6} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll5}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{percentile} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr6}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{softmax}\PY{p}{)}
+         
+         \PY{n}{target\PYZus{}y} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{vector}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target Y integer}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{input\PYZus{}X} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{probs} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}output}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{deterministic} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{)}
+         \PY{n}{y\PYZus{}predicted} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}all network weights (shared variables)}
+         \PY{n}{all\PYZus{}weights} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}all\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{all\PYZus{}weights}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}Mean categorical crossentropy as a loss function \PYZhy{} similar to logistic loss but for multiclass targets}
+         \PY{n}{loss} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}crossentropy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{l2\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l2}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}1}
+         \PY{n}{l1\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l1}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}3}
+         \PY{n}{loss} \PY{o}{+}\PY{o}{=} \PY{n}{l2\PYZus{}penalty} \PY{o}{+} \PY{n}{l1\PYZus{}penalty}
+         
+         \PY{c+c1}{\PYZsh{}prediction accuracy}
+         \PY{n}{accuracy} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}accuracy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}This function computes gradient AND composes weight updates just like you did earlier}
+         \PY{n}{updates\PYZus{}sgd} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{updates}\PY{o}{.}\PY{n}{adagrad}\PY{p}{(}\PY{n}{loss}\PY{p}{,} \PY{n}{all\PYZus{}weights}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}function that computes loss and updates weights}
+         \PY{n}{train\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{loss}\PY{p}{,} \PY{n}{accuracy}\PY{p}{]}\PY{p}{,} \PY{n}{updates} \PY{o}{=} \PY{n}{updates\PYZus{}sgd}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}function that just computes accuracy}
+         \PY{n}{accuracy\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,}\PY{n}{accuracy}\PY{p}{)}
+         
+         \PY{n}{num\PYZus{}epochs} \PY{o}{=} \PY{l+m+mi}{30} \PY{c+c1}{\PYZsh{}amount of passes through the data}
+         
+         \PY{n}{batch\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{100} \PY{c+c1}{\PYZsh{}number of samples processed at each function call}
+         
+         \PY{k}{for} \PY{n}{epoch} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} In each epoch, we do a full pass over the training data:}
+             \PY{n}{train\PYZus{}err} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{train\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{train\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{start\PYZus{}time} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                 \PY{n}{train\PYZus{}err\PYZus{}batch}\PY{p}{,} \PY{n}{train\PYZus{}acc\PYZus{}batch} \PY{o}{=} \PY{n}{train\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{train\PYZus{}err} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}err\PYZus{}batch}
+                 \PY{n}{train\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}acc\PYZus{}batch}
+                 \PY{n}{train\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+         
+             \PY{c+c1}{\PYZsh{} And a full pass over the validation data:}
+             \PY{n}{val\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{val\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                 \PY{n}{val\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{accuracy\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{val\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+         
+             
+             \PY{c+c1}{\PYZsh{} Then we print the results for this epoch:}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Epoch \PYZob{}\PYZcb{} of \PYZob{}\PYZcb{} took \PYZob{}:.3f\PYZcb{}s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{epoch} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{,} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start\PYZus{}time}\PY{p}{)}\PY{p}{)}
+         
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  training loss (in\PYZhy{}iteration):}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.6f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{train\PYZus{}err} \PY{o}{/} \PY{n}{train\PYZus{}batches}\PY{p}{)}\PY{p}{)}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  train accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{train\PYZus{}acc} \PY{o}{/} \PY{n}{train\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  validation accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{val\PYZus{}acc} \PY{o}{/} \PY{n}{val\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[W, b, W, b, W, b, W, b, W, b, W, b]
+Epoch 1 of 30 took 1.998s
+  training loss (in-iteration):		3749.619600
+  train accuracy:		28.59 \%
+  validation accuracy:		26.00 \%
+Epoch 2 of 30 took 2.015s
+  training loss (in-iteration):		3.113019
+  train accuracy:		32.24 \%
+  validation accuracy:		46.60 \%
+Epoch 3 of 30 took 1.982s
+  training loss (in-iteration):		2.176733
+  train accuracy:		45.90 \%
+  validation accuracy:		49.40 \%
+Epoch 4 of 30 took 2.010s
+  training loss (in-iteration):		1.896570
+  train accuracy:		52.72 \%
+  validation accuracy:		58.00 \%
+Epoch 5 of 30 took 1.978s
+  training loss (in-iteration):		1.765641
+  train accuracy:		58.38 \%
+  validation accuracy:		52.20 \%
+Epoch 6 of 30 took 2.000s
+  training loss (in-iteration):		1.671071
+  train accuracy:		63.17 \%
+  validation accuracy:		62.00 \%
+Epoch 7 of 30 took 2.000s
+  training loss (in-iteration):		1.551463
+  train accuracy:		69.31 \%
+  validation accuracy:		55.20 \%
+Epoch 8 of 30 took 2.111s
+  training loss (in-iteration):		1.477413
+  train accuracy:		71.52 \%
+  validation accuracy:		66.60 \%
+Epoch 9 of 30 took 2.005s
+  training loss (in-iteration):		1.404215
+  train accuracy:		76.62 \%
+  validation accuracy:		59.40 \%
+Epoch 10 of 30 took 1.980s
+  training loss (in-iteration):		1.373313
+  train accuracy:		76.55 \%
+  validation accuracy:		67.40 \%
+Epoch 11 of 30 took 1.987s
+  training loss (in-iteration):		1.343516
+  train accuracy:		77.24 \%
+  validation accuracy:		60.80 \%
+Epoch 12 of 30 took 2.008s
+  training loss (in-iteration):		1.256678
+  train accuracy:		81.34 \%
+  validation accuracy:		61.20 \%
+Epoch 13 of 30 took 2.102s
+  training loss (in-iteration):		1.214769
+  train accuracy:		83.93 \%
+  validation accuracy:		66.20 \%
+Epoch 14 of 30 took 1.999s
+  training loss (in-iteration):		1.203365
+  train accuracy:		84.66 \%
+  validation accuracy:		61.60 \%
+Epoch 15 of 30 took 1.974s
+  training loss (in-iteration):		1.129455
+  train accuracy:		87.41 \%
+  validation accuracy:		67.00 \%
+Epoch 16 of 30 took 2.126s
+  training loss (in-iteration):		1.263559
+  train accuracy:		85.00 \%
+  validation accuracy:		67.40 \%
+Epoch 17 of 30 took 1.980s
+  training loss (in-iteration):		1.062010
+  train accuracy:		91.52 \%
+  validation accuracy:		65.40 \%
+Epoch 18 of 30 took 1.974s
+  training loss (in-iteration):		1.000695
+  train accuracy:		93.72 \%
+  validation accuracy:		64.40 \%
+Epoch 19 of 30 took 2.005s
+  training loss (in-iteration):		0.974304
+  train accuracy:		94.59 \%
+  validation accuracy:		64.00 \%
+Epoch 20 of 30 took 1.980s
+  training loss (in-iteration):		0.925185
+  train accuracy:		96.62 \%
+  validation accuracy:		62.00 \%
+Epoch 21 of 30 took 2.003s
+  training loss (in-iteration):		0.937583
+  train accuracy:		96.28 \%
+  validation accuracy:		62.60 \%
+Epoch 22 of 30 took 1.997s
+  training loss (in-iteration):		1.025416
+  train accuracy:		93.21 \%
+  validation accuracy:		62.00 \%
+Epoch 23 of 30 took 1.987s
+  training loss (in-iteration):		1.056850
+  train accuracy:		92.55 \%
+  validation accuracy:		63.80 \%
+Epoch 24 of 30 took 1.997s
+  training loss (in-iteration):		0.880320
+  train accuracy:		98.07 \%
+  validation accuracy:		64.40 \%
+Epoch 25 of 30 took 2.182s
+  training loss (in-iteration):		0.861131
+  train accuracy:		98.76 \%
+  validation accuracy:		64.80 \%
+Epoch 26 of 30 took 2.169s
+  training loss (in-iteration):		0.866686
+  train accuracy:		98.07 \%
+  validation accuracy:		64.60 \%
+Epoch 27 of 30 took 2.097s
+  training loss (in-iteration):		0.839886
+  train accuracy:		99.03 \%
+  validation accuracy:		64.80 \%
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        KeyboardInterrupt                         Traceback (most recent call last)
+
+        <ipython-input-37-d82e6a4058e4> in <module>()
+         68     for batch in iterate\_minibatches(f1\_train, y\_train, batch\_size):
+         69         inputs, targets = batch
+    ---> 70         train\_err\_batch, train\_acc\_batch = train\_fun(inputs, targets.astype(np.int32))
+         71         train\_err += train\_err\_batch
+         72         train\_acc += train\_acc\_batch
+    
+
+        /usr/lib/python2.7/site-packages/theano/compile/function\_module.pyc in \_\_call\_\_(self, *args, **kwargs)
+        813                         s.storage[0] = s.type.filter(
+        814                             arg, strict=s.strict,
+    --> 815                             allow\_downcast=s.allow\_downcast)
+        816 
+        817                     except Exception as e:
+    
+
+        /usr/lib/python2.7/site-packages/theano/tensor/type.pyc in filter(self, data, strict, allow\_downcast)
+        148                     \# data has to be converted.
+        149                     \# Check that this conversion is lossless
+    --> 150                     converted\_data = theano.\_asarray(data, self.dtype)
+        151                     \# We use the `values\_eq` static function from TensorType
+        152                     \# to handle NaN values.
+    
+
+        /usr/lib/python2.7/site-packages/theano/misc/safe\_asarray.pyc in \_asarray(a, dtype, order)
+         32         dtype = theano.config.floatX
+         33     dtype = numpy.dtype(dtype)  \# Convert into dtype object.
+    ---> 34     rval = numpy.asarray(a, dtype=dtype, order=order)
+         35     \# Note that dtype comparison must be done by comparing their `num`
+         36     \# attribute. One cannot assume that two identical data types are pointers
+    
+
+        /usr/lib64/python2.7/site-packages/numpy/core/numeric.pyc in asarray(a, dtype, order)
+        480 
+        481     """
+    --> 482     return array(a, dtype, copy=False, order=order)
+        483 
+        484 def asanyarray(a, dtype=None, order=None):
+    
+
+        KeyboardInterrupt: 
+
+    \end{Verbatim}
+
+    \subsubsection{Network with road, 4
+classes}\label{network-with-road-4-classes}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data\PYZus{}basic.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{Seg\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}val}\PY{p}{,} \PY{n}{Seg\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{Seg\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{features\PYZus{}basic.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{f1\PYZus{}test}\PY{p}{,} \PY{n}{f2\PYZus{}train}\PY{p}{,} \PY{n}{f2\PYZus{}val}\PY{p}{,} \PY{n}{f2\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{input\PYZus{}layer} \PY{o}{=} \PY{n}{InputLayer}\PY{p}{(}\PY{p}{(}\PY{n+nb+bp}{None}\PY{p}{,} \PY{n}{f1\PYZus{}train}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ll1} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{input\PYZus{}layer}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{2048}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr1} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll1}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll2} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr1}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{2048}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr3} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll2}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll3} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr3}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{1024}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr4} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll3}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll4} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr4}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{512}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr5} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll4}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ll5} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr5}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{256}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{lasagne}\PY{o}{.}\PY{n}{nonlinearities}\PY{o}{.}\PY{n}{elu}\PY{p}{)}
+         \PY{n}{dr6} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll5}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{percentile} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr6}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{softmax}\PY{p}{)}
+         
+         \PY{n}{target\PYZus{}y} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{vector}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target Y integer}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{input\PYZus{}X} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{probs} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}output}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{deterministic} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{)}
+         \PY{n}{y\PYZus{}predicted} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}all network weights (shared variables)}
+         \PY{n}{all\PYZus{}weights} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}all\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{all\PYZus{}weights}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}Mean categorical crossentropy as a loss function \PYZhy{} similar to logistic loss but for multiclass targets}
+         \PY{n}{loss} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}crossentropy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{l2\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l2}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}1}
+         \PY{n}{l1\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l1}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}2}
+         \PY{n}{loss} \PY{o}{+}\PY{o}{=} \PY{n}{l2\PYZus{}penalty} \PY{o}{+} \PY{n}{l1\PYZus{}penalty}
+         
+         \PY{c+c1}{\PYZsh{}prediction accuracy}
+         \PY{n}{accuracy} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}accuracy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}This function computes gradient AND composes weight updates just like you did earlier}
+         \PY{n}{updates\PYZus{}sgd} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{updates}\PY{o}{.}\PY{n}{adagrad}\PY{p}{(}\PY{n}{loss}\PY{p}{,} \PY{n}{all\PYZus{}weights}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{0.005}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}function that computes loss and updates weights}
+         \PY{n}{train\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{loss}\PY{p}{,} \PY{n}{accuracy}\PY{p}{]}\PY{p}{,} \PY{n}{updates} \PY{o}{=} \PY{n}{updates\PYZus{}sgd}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}function that just computes accuracy}
+         \PY{n}{accuracy\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,}\PY{n}{accuracy}\PY{p}{)}
+         
+         \PY{n}{num\PYZus{}epochs} \PY{o}{=} \PY{l+m+mi}{300} \PY{c+c1}{\PYZsh{}amount of passes through the data}
+         
+         \PY{n}{batch\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{100} \PY{c+c1}{\PYZsh{}number of samples processed at each function call}
+         
+         \PY{k}{for} \PY{n}{epoch} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} In each epoch, we do a full pass over the training data:}
+             \PY{n}{train\PYZus{}err} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{train\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{train\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{start\PYZus{}time} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                 \PY{n}{train\PYZus{}err\PYZus{}batch}\PY{p}{,} \PY{n}{train\PYZus{}acc\PYZus{}batch} \PY{o}{=} \PY{n}{train\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{train\PYZus{}err} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}err\PYZus{}batch}
+                 \PY{n}{train\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}acc\PYZus{}batch}
+                 \PY{n}{train\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+         
+             \PY{c+c1}{\PYZsh{} And a full pass over the validation data:}
+             \PY{n}{val\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{n}{val\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                 \PY{n}{val\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{accuracy\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{val\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+         
+             
+             \PY{c+c1}{\PYZsh{} Then we print the results for this epoch:}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Epoch \PYZob{}\PYZcb{} of \PYZob{}\PYZcb{} took \PYZob{}:.3f\PYZcb{}s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{epoch} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{,} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start\PYZus{}time}\PY{p}{)}\PY{p}{)}
+         
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  training loss (in\PYZhy{}iteration):}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.6f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{train\PYZus{}err} \PY{o}{/} \PY{n}{train\PYZus{}batches}\PY{p}{)}\PY{p}{)}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  train accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{train\PYZus{}acc} \PY{o}{/} \PY{n}{train\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+             \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  validation accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                 \PY{n}{val\PYZus{}acc} \PY{o}{/} \PY{n}{val\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[W, b, W, b, W, b, W, b, W, b, W, b]
+Epoch 1 of 300 took 2.036s
+  training loss (in-iteration):		140.387504
+  train accuracy:		31.28 \%
+  validation accuracy:		52.80 \%
+Epoch 2 of 300 took 2.016s
+  training loss (in-iteration):		13.295092
+  train accuracy:		55.17 \%
+  validation accuracy:		58.20 \%
+Epoch 3 of 300 took 2.002s
+  training loss (in-iteration):		12.705572
+  train accuracy:		62.45 \%
+  validation accuracy:		60.40 \%
+Epoch 4 of 300 took 2.003s
+  training loss (in-iteration):		12.226186
+  train accuracy:		68.86 \%
+  validation accuracy:		60.40 \%
+Epoch 5 of 300 took 2.002s
+  training loss (in-iteration):		11.880651
+  train accuracy:		71.07 \%
+  validation accuracy:		60.20 \%
+Epoch 6 of 300 took 2.014s
+  training loss (in-iteration):		11.404465
+  train accuracy:		79.07 \%
+  validation accuracy:		61.80 \%
+Epoch 7 of 300 took 2.018s
+  training loss (in-iteration):		11.053822
+  train accuracy:		84.86 \%
+  validation accuracy:		65.00 \%
+Epoch 8 of 300 took 1.896s
+  training loss (in-iteration):		10.977491
+  train accuracy:		79.59 \%
+  validation accuracy:		61.00 \%
+Epoch 9 of 300 took 2.035s
+  training loss (in-iteration):		10.554585
+  train accuracy:		87.14 \%
+  validation accuracy:		65.00 \%
+Epoch 10 of 300 took 1.963s
+  training loss (in-iteration):		10.316450
+  train accuracy:		90.83 \%
+  validation accuracy:		64.80 \%
+Epoch 11 of 300 took 1.936s
+  training loss (in-iteration):		10.013761
+  train accuracy:		95.55 \%
+  validation accuracy:		63.40 \%
+Epoch 12 of 300 took 1.933s
+  training loss (in-iteration):		9.810423
+  train accuracy:		97.24 \%
+  validation accuracy:		63.80 \%
+Epoch 13 of 300 took 1.933s
+  training loss (in-iteration):		9.722251
+  train accuracy:		95.52 \%
+  validation accuracy:		63.00 \%
+Epoch 14 of 300 took 1.922s
+  training loss (in-iteration):		9.467655
+  train accuracy:		99.24 \%
+  validation accuracy:		64.40 \%
+Epoch 15 of 300 took 1.951s
+  training loss (in-iteration):		9.321485
+  train accuracy:		99.38 \%
+  validation accuracy:		66.20 \%
+Epoch 16 of 300 took 1.924s
+  training loss (in-iteration):		9.184269
+  train accuracy:		99.72 \%
+  validation accuracy:		65.60 \%
+Epoch 17 of 300 took 1.955s
+  training loss (in-iteration):		9.060074
+  train accuracy:		99.86 \%
+  validation accuracy:		65.60 \%
+Epoch 18 of 300 took 2.053s
+  training loss (in-iteration):		8.943007
+  train accuracy:		99.93 \%
+  validation accuracy:		64.40 \%
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        KeyboardInterrupt                         Traceback (most recent call last)
+
+        <ipython-input-36-c68afadbdafd> in <module>()
+         52     for batch in iterate\_minibatches(f1\_train, y\_train, batch\_size):
+         53         inputs, targets = batch
+    ---> 54         train\_err\_batch, train\_acc\_batch = train\_fun(inputs, targets.astype(np.int32))
+         55         train\_err += train\_err\_batch
+         56         train\_acc += train\_acc\_batch
+    
+
+        /usr/lib/python2.7/site-packages/theano/compile/function\_module.pyc in \_\_call\_\_(self, *args, **kwargs)
+        887         try:
+        888             outputs =\textbackslash{}
+    --> 889                 self.fn() if output\_subset is None else\textbackslash{}
+        890                 self.fn(output\_subset=output\_subset)
+        891         except Exception:
+    
+
+        KeyboardInterrupt: 
+
+    \end{Verbatim}
+
+    \subsubsection{Network deleted road, 4 classes, stacked with
+segs}\label{network-deleted-road-4-classes-stacked-with-segs}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data\PYZus{}rem\PYZus{}road.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{Seg\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}val}\PY{p}{,} \PY{n}{Seg\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{Seg\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{features\PYZus{}rem\PYZus{}road.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{f1\PYZus{}test}\PY{p}{,} \PY{n}{f2\PYZus{}train}\PY{p}{,} \PY{n}{f2\PYZus{}val}\PY{p}{,} \PY{n}{f2\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{n}{f1\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n}{f1\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}val}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            
+        \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        
+        \PY{n}{input\PYZus{}layer} \PY{o}{=} \PY{n}{InputLayer}\PY{p}{(}\PY{p}{(}\PY{n+nb+bp}{None}\PY{p}{,} \PY{n}{f1\PYZus{}train}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ll1} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{input\PYZus{}layer}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{4096}\PY{p}{)}
+        \PY{n}{dr1} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll1}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{ll2} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr1}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{4096}\PY{p}{)}
+        \PY{n}{dr3} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll2}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{percentile} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr3}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{softmax}\PY{p}{)}
+        
+        \PY{n}{target\PYZus{}y} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{vector}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target Y integer}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{input\PYZus{}X} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{probs} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}output}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{deterministic} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{)}
+        \PY{n}{y\PYZus{}predicted} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}all network weights (shared variables)}
+        \PY{n}{all\PYZus{}weights} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}all\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{)}
+        \PY{k}{print}\PY{p}{(}\PY{n}{all\PYZus{}weights}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Mean categorical crossentropy as a loss function \PYZhy{} similar to logistic loss but for multiclass targets}
+        \PY{n}{loss} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}crossentropy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{n}{l2\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l2}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}2}
+        \PY{n}{l1\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l1}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}3}
+        \PY{n}{loss} \PY{o}{+}\PY{o}{=} \PY{n}{l2\PYZus{}penalty} \PY{o}{+} \PY{n}{l1\PYZus{}penalty}
+        
+        \PY{c+c1}{\PYZsh{}prediction accuracy}
+        \PY{n}{accuracy} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}accuracy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}This function computes gradient AND composes weight updates just like you did earlier}
+        \PY{n}{updates\PYZus{}sgd} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{updates}\PY{o}{.}\PY{n}{adagrad}\PY{p}{(}\PY{n}{loss}\PY{p}{,} \PY{n}{all\PYZus{}weights}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}function that computes loss and updates weights}
+        \PY{n}{train\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{loss}\PY{p}{,} \PY{n}{accuracy}\PY{p}{]}\PY{p}{,} \PY{n}{updates} \PY{o}{=} \PY{n}{updates\PYZus{}sgd}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}function that just computes accuracy}
+        \PY{n}{accuracy\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,}\PY{n}{accuracy}\PY{p}{)}
+        
+        \PY{n}{num\PYZus{}epochs} \PY{o}{=} \PY{l+m+mi}{30} \PY{c+c1}{\PYZsh{}amount of passes through the data}
+        
+        \PY{n}{batch\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{100} \PY{c+c1}{\PYZsh{}number of samples processed at each function call}
+        
+        \PY{k}{for} \PY{n}{epoch} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} In each epoch, we do a full pass over the training data:}
+            \PY{n}{train\PYZus{}err} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{train\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{train\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{start\PYZus{}time} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                \PY{n}{train\PYZus{}err\PYZus{}batch}\PY{p}{,} \PY{n}{train\PYZus{}acc\PYZus{}batch} \PY{o}{=} \PY{n}{train\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                \PY{n}{train\PYZus{}err} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}err\PYZus{}batch}
+                \PY{n}{train\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}acc\PYZus{}batch}
+                \PY{n}{train\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+            \PY{c+c1}{\PYZsh{} And a full pass over the validation data:}
+            \PY{n}{val\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{val\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                \PY{n}{val\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{accuracy\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                \PY{n}{val\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+            
+            \PY{c+c1}{\PYZsh{} Then we print the results for this epoch:}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Epoch \PYZob{}\PYZcb{} of \PYZob{}\PYZcb{} took \PYZob{}:.3f\PYZcb{}s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{epoch} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{,} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start\PYZus{}time}\PY{p}{)}\PY{p}{)}
+        
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  training loss (in\PYZhy{}iteration):}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.6f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{train\PYZus{}err} \PY{o}{/} \PY{n}{train\PYZus{}batches}\PY{p}{)}\PY{p}{)}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  train accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{train\PYZus{}acc} \PY{o}{/} \PY{n}{train\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  validation accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{val\PYZus{}acc} \PY{o}{/} \PY{n}{val\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[W, b, W, b, W, b]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        MemoryError                               Traceback (most recent call last)
+
+        <ipython-input-9-7a80a87eb928> in <module>()
+         65     for batch in iterate\_minibatches(f1\_train, y\_train, batch\_size):
+         66         inputs, targets = batch
+    ---> 67         train\_err\_batch, train\_acc\_batch = train\_fun(inputs, targets.astype(np.int32))
+         68         train\_err += train\_err\_batch
+         69         train\_acc += train\_acc\_batch
+    
+
+        /home/user/anaconda2/lib/python2.7/site-packages/theano/compile/function\_module.pyc in \_\_call\_\_(self, *args, **kwargs)
+        910                     node=self.fn.nodes[self.fn.position\_of\_error],
+        911                     thunk=thunk,
+    --> 912                     storage\_map=getattr(self.fn, 'storage\_map', None))
+        913             else:
+        914                 \# old-style linkers raise their own exceptions
+    
+
+        /home/user/anaconda2/lib/python2.7/site-packages/theano/gof/link.pyc in raise\_with\_op(node, thunk, exc\_info, storage\_map)
+        312         \# extra long error message in that case.
+        313         pass
+    --> 314     reraise(exc\_type, exc\_value, exc\_trace)
+        315 
+        316 
+    
+
+        /home/user/anaconda2/lib/python2.7/site-packages/theano/compile/function\_module.pyc in \_\_call\_\_(self, *args, **kwargs)
+        897         try:
+        898             outputs =\textbackslash{}
+    --> 899                 self.fn() if output\_subset is None else\textbackslash{}
+        900                 self.fn(output\_subset=output\_subset)
+        901         except Exception:
+    
+
+        MemoryError: Error allocating 603979776 bytes of device memory (out of memory).
+    Apply node that caused the error: GpuDot22(GpuDimShuffle\{1,0\}.0, GpuElemwise\{Composite\{(i0 + (i0 * sgn(i1)))\}\}[(0, 0)].0)
+    Toposort index: 54
+    Inputs types: [CudaNdarrayType(float32, matrix), CudaNdarrayType(float32, matrix)]
+    Inputs shapes: [(36864, 100), (100, 4096)]
+    Inputs strides: [(1, 36864), (4096, 1)]
+    Inputs values: ['not shown', 'not shown']
+    Outputs clients: [[GpuElemwise\{Sqr\}[(0, 0)](GpuDot22.0)]]
+    
+    HINT: Re-running with most Theano optimization disabled could give you a back-trace of when this node was created. This can be done with by setting the Theano flag 'optimizer=fast\_compile'. If that does not work, Theano optimizations can be disabled with 'optimizer=None'.
+    HINT: Use the Theano flag 'exception\_verbosity=high' for a debugprint and storage map footprint of this apply node.
+
+    \end{Verbatim}
+
+    \subsubsection{Network with road, 4 classes, stacked with
+segs}\label{network-with-road-4-classes-stacked-with-segs}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data\PYZus{}basic.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{Seg\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}val}\PY{p}{,} \PY{n}{Seg\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{Seg\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{features\PYZus{}basic.pkl}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{f1\PYZus{}test}\PY{p}{,} \PY{n}{f2\PYZus{}train}\PY{p}{,} \PY{n}{f2\PYZus{}val}\PY{p}{,} \PY{n}{f2\PYZus{}test} \PY{o}{=} \PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+            
+        \PY{n}{f1\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n}{f1\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f2\PYZus{}val}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            
+        \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{)}\PY{p}{,}
+                \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{n}{y\PYZus{}train} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{bins}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        
+        \PY{n}{input\PYZus{}layer} \PY{o}{=} \PY{n}{InputLayer}\PY{p}{(}\PY{p}{(}\PY{n+nb+bp}{None}\PY{p}{,} \PY{n}{f1\PYZus{}train}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ll1} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{input\PYZus{}layer}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{4096}\PY{p}{)}
+        \PY{n}{dr1} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll1}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{ll2} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr1}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{l+m+mi}{4096}\PY{p}{)}
+        \PY{n}{dr3} \PY{o}{=} \PY{n}{DropoutLayer}\PY{p}{(}\PY{n}{ll2}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{percentile} \PY{o}{=} \PY{n}{DenseLayer}\PY{p}{(}\PY{n}{dr3}\PY{p}{,} \PY{n}{num\PYZus{}units}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{nonlinearity}\PY{o}{=}\PY{n}{softmax}\PY{p}{)}
+        
+        \PY{n}{target\PYZus{}y} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{vector}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{target Y integer}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{input\PYZus{}X} \PY{o}{=} \PY{n}{T}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{probs} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}output}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{deterministic} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{)}
+        \PY{n}{y\PYZus{}predicted} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}all network weights (shared variables)}
+        \PY{n}{all\PYZus{}weights} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{layers}\PY{o}{.}\PY{n}{get\PYZus{}all\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{)}
+        \PY{k}{print}\PY{p}{(}\PY{n}{all\PYZus{}weights}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Mean categorical crossentropy as a loss function \PYZhy{} similar to logistic loss but for multiclass targets}
+        \PY{n}{loss} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}crossentropy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{n}{l2\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l2}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}1}
+        \PY{n}{l1\PYZus{}penalty} \PY{o}{=} \PY{n}{regularize\PYZus{}layer\PYZus{}params}\PY{p}{(}\PY{n}{percentile}\PY{p}{,} \PY{n}{l1}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1e\PYZhy{}2}
+        \PY{n}{loss} \PY{o}{+}\PY{o}{=} \PY{n}{l2\PYZus{}penalty} \PY{o}{+} \PY{n}{l1\PYZus{}penalty}
+        
+        \PY{c+c1}{\PYZsh{}prediction accuracy}
+        \PY{n}{accuracy} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{objectives}\PY{o}{.}\PY{n}{categorical\PYZus{}accuracy}\PY{p}{(}\PY{n}{probs}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}This function computes gradient AND composes weight updates just like you did earlier}
+        \PY{n}{updates\PYZus{}sgd} \PY{o}{=} \PY{n}{lasagne}\PY{o}{.}\PY{n}{updates}\PY{o}{.}\PY{n}{adagrad}\PY{p}{(}\PY{n}{loss}\PY{p}{,} \PY{n}{all\PYZus{}weights}\PY{p}{,} \PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}function that computes loss and updates weights}
+        \PY{n}{train\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{loss}\PY{p}{,} \PY{n}{accuracy}\PY{p}{]}\PY{p}{,} \PY{n}{updates} \PY{o}{=} \PY{n}{updates\PYZus{}sgd}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}function that just computes accuracy}
+        \PY{n}{accuracy\PYZus{}fun} \PY{o}{=} \PY{n}{theano}\PY{o}{.}\PY{n}{function}\PY{p}{(}\PY{p}{[}\PY{n}{input\PYZus{}X}\PY{p}{,} \PY{n}{target\PYZus{}y}\PY{p}{]}\PY{p}{,}\PY{n}{accuracy}\PY{p}{)}
+        
+        \PY{n}{num\PYZus{}epochs} \PY{o}{=} \PY{l+m+mi}{30} \PY{c+c1}{\PYZsh{}amount of passes through the data}
+        
+        \PY{n}{batch\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{100} \PY{c+c1}{\PYZsh{}number of samples processed at each function call}
+        
+        \PY{k}{for} \PY{n}{epoch} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} In each epoch, we do a full pass over the training data:}
+            \PY{n}{train\PYZus{}err} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{train\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{train\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{start\PYZus{}time} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                \PY{n}{train\PYZus{}err\PYZus{}batch}\PY{p}{,} \PY{n}{train\PYZus{}acc\PYZus{}batch} \PY{o}{=} \PY{n}{train\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                \PY{n}{train\PYZus{}err} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}err\PYZus{}batch}
+                \PY{n}{train\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{train\PYZus{}acc\PYZus{}batch}
+                \PY{n}{train\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+            \PY{c+c1}{\PYZsh{} And a full pass over the validation data:}
+            \PY{n}{val\PYZus{}acc} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{val\PYZus{}batches} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{k}{for} \PY{n}{batch} \PY{o+ow}{in} \PY{n}{iterate\PYZus{}minibatches}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{p}{)}\PY{p}{:}
+                \PY{n}{inputs}\PY{p}{,} \PY{n}{targets} \PY{o}{=} \PY{n}{batch}
+                \PY{n}{val\PYZus{}acc} \PY{o}{+}\PY{o}{=} \PY{n}{accuracy\PYZus{}fun}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{targets}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{p}{)}
+                \PY{n}{val\PYZus{}batches} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+            
+            \PY{c+c1}{\PYZsh{} Then we print the results for this epoch:}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Epoch \PYZob{}\PYZcb{} of \PYZob{}\PYZcb{} took \PYZob{}:.3f\PYZcb{}s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{epoch} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{,} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start\PYZus{}time}\PY{p}{)}\PY{p}{)}
+        
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  training loss (in\PYZhy{}iteration):}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.6f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{train\PYZus{}err} \PY{o}{/} \PY{n}{train\PYZus{}batches}\PY{p}{)}\PY{p}{)}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  train accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{train\PYZus{}acc} \PY{o}{/} \PY{n}{train\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+            \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{  validation accuracy:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZob{}:.2f\PYZcb{} }\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{val\PYZus{}acc} \PY{o}{/} \PY{n}{val\PYZus{}batches} \PY{o}{*} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[W, b, W, b, W, b]
+Epoch 1 of 30 took 4.315s
+  training loss (in-iteration):		4726.092065
+  train accuracy:		24.38 \%
+  validation accuracy:		33.00 \%
+Epoch 2 of 30 took 4.367s
+  training loss (in-iteration):		11.885494
+  train accuracy:		30.03 \%
+  validation accuracy:		26.00 \%
+Epoch 3 of 30 took 4.157s
+  training loss (in-iteration):		5.118199
+  train accuracy:		30.03 \%
+  validation accuracy:		25.20 \%
+Epoch 4 of 30 took 4.156s
+  training loss (in-iteration):		4.719048
+  train accuracy:		33.24 \%
+  validation accuracy:		25.00 \%
+Epoch 5 of 30 took 4.154s
+  training loss (in-iteration):		4.602650
+  train accuracy:		33.83 \%
+  validation accuracy:		25.40 \%
+Epoch 6 of 30 took 4.158s
+  training loss (in-iteration):		4.511264
+  train accuracy:		34.45 \%
+  validation accuracy:		29.20 \%
+Epoch 7 of 30 took 4.156s
+  training loss (in-iteration):		4.433514
+  train accuracy:		35.31 \%
+  validation accuracy:		31.80 \%
+Epoch 8 of 30 took 4.153s
+  training loss (in-iteration):		4.364174
+  train accuracy:		35.90 \%
+  validation accuracy:		33.00 \%
+Epoch 9 of 30 took 4.321s
+  training loss (in-iteration):		4.301553
+  train accuracy:		36.66 \%
+  validation accuracy:		34.60 \%
+Epoch 10 of 30 took 4.163s
+  training loss (in-iteration):		4.242831
+  train accuracy:		38.03 \%
+  validation accuracy:		36.00 \%
+Epoch 11 of 30 took 4.158s
+  training loss (in-iteration):		4.186211
+  train accuracy:		40.17 \%
+  validation accuracy:		37.40 \%
+Epoch 12 of 30 took 4.189s
+  training loss (in-iteration):		4.131390
+  train accuracy:		42.07 \%
+  validation accuracy:		37.60 \%
+Epoch 13 of 30 took 4.163s
+  training loss (in-iteration):		4.075547
+  train accuracy:		43.79 \%
+  validation accuracy:		39.00 \%
+Epoch 14 of 30 took 4.183s
+  training loss (in-iteration):		4.020848
+  train accuracy:		45.31 \%
+  validation accuracy:		40.00 \%
+Epoch 15 of 30 took 4.165s
+  training loss (in-iteration):		3.965067
+  train accuracy:		47.62 \%
+  validation accuracy:		42.20 \%
+Epoch 16 of 30 took 4.164s
+  training loss (in-iteration):		3.908799
+  train accuracy:		50.52 \%
+  validation accuracy:		42.60 \%
+Epoch 17 of 30 took 4.170s
+  training loss (in-iteration):		3.857314
+  train accuracy:		53.24 \%
+  validation accuracy:		43.60 \%
+Epoch 18 of 30 took 4.167s
+  training loss (in-iteration):		3.806450
+  train accuracy:		55.59 \%
+  validation accuracy:		43.20 \%
+Epoch 19 of 30 took 4.179s
+  training loss (in-iteration):		3.757564
+  train accuracy:		57.03 \%
+  validation accuracy:		43.20 \%
+Epoch 20 of 30 took 4.165s
+  training loss (in-iteration):		3.713492
+  train accuracy:		58.41 \%
+  validation accuracy:		42.40 \%
+Epoch 21 of 30 took 4.181s
+  training loss (in-iteration):		3.673273
+  train accuracy:		59.66 \%
+  validation accuracy:		42.20 \%
+Epoch 22 of 30 took 4.169s
+  training loss (in-iteration):		3.635788
+  train accuracy:		60.59 \%
+  validation accuracy:		43.00 \%
+Epoch 23 of 30 took 4.188s
+  training loss (in-iteration):		3.601693
+  train accuracy:		61.66 \%
+  validation accuracy:		40.60 \%
+Epoch 24 of 30 took 4.169s
+  training loss (in-iteration):		3.569888
+  train accuracy:		63.17 \%
+  validation accuracy:		41.60 \%
+Epoch 25 of 30 took 4.192s
+  training loss (in-iteration):		3.539712
+  train accuracy:		63.79 \%
+  validation accuracy:		41.00 \%
+Epoch 26 of 30 took 4.172s
+  training loss (in-iteration):		3.510056
+  train accuracy:		64.86 \%
+  validation accuracy:		41.40 \%
+Epoch 27 of 30 took 4.164s
+  training loss (in-iteration):		3.482480
+  train accuracy:		66.41 \%
+  validation accuracy:		40.20 \%
+Epoch 28 of 30 took 4.187s
+  training loss (in-iteration):		3.455721
+  train accuracy:		67.69 \%
+  validation accuracy:		40.80 \%
+Epoch 29 of 30 took 4.164s
+  training loss (in-iteration):		3.428972
+  train accuracy:		68.83 \%
+  validation accuracy:		41.20 \%
+Epoch 30 of 30 took 4.173s
+  training loss (in-iteration):		3.419649
+  train accuracy:		68.41 \%
+  validation accuracy:		41.20 \%
+    \end{Verbatim}
+
+    \section{Results}\label{results}
+
+    The best score was achieved with stacking technique.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{k+kn}{from} \PY{n+nn}{stacking} \PY{k+kn}{import} \PY{n}{Stacking}
+         
+         \PY{n}{basic\PYZus{}wildfowl} \PY{o}{=} \PY{n}{Stacking}\PY{p}{(}\PY{n}{base\PYZus{}estimators}\PY{o}{=}\PY{p}{[}
+                 \PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{LinearSVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{loss}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{squared\PYZus{}hinge}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                         \PY{n}{dual}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crammer\PYZus{}singer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,} \PY{n}{penalty}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{(}\PY{k}{lambda} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{:} \PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poly}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{degree}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,}
+                  \PY{k}{lambda} \PY{n}{clf}\PY{p}{,} \PY{n}{X}\PY{p}{:} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{normalizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+                                   \PY{n}{meta\PYZus{}fitter}\PY{o}{=}\PY{n}{SVC}\PY{p}{(}\PY{n}{C}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{kernel}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rbf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{,}
+                                   \PY{n}{n\PYZus{}folds}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{extend\PYZus{}meta}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+         \PY{n}{y\PYZus{}predicted} \PY{o}{=} \PY{n}{basic\PYZus{}wildfowl}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}train}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{f1\PYZus{}val}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/lib64/python2.7/site-packages/sklearn/cross\_validation.py:69: DeprecationWarning: The indices parameter is deprecated and will be removed (assumed True) in 0.17
+  stacklevel=1)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{confusion\PYZus{}matrix}
+         
+         \PY{k}{def} \PY{n+nf}{plot\PYZus{}confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{cm}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Confusion matrix}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{cm}\PY{o}{.}\PY{n}{Blues}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{cm}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nearest}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{cmap}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{n}{title}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{p}{)}
+             \PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vfar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{far}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{close}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vclose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+             \PY{n}{tick\PYZus{}marks} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{tick\PYZus{}marks}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{45}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{tick\PYZus{}marks}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{True label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cm.pdf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{plot\PYZus{}confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}predicted}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/lib64/python2.7/site-packages/matplotlib/collections.py:590: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if self.\_edgecolors == str('face'):
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_109_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{A} \PY{o}{=} \PY{n}{confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{y\PYZus{}val}\PY{p}{,} \PY{n}{y\PYZus{}predicted}\PY{p}{)}
+         \PY{n}{np}\PY{o}{.}\PY{n}{set\PYZus{}printoptions}\PY{p}{(}\PY{n}{precision}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Confusion matrix, without normalization}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{cm} \PY{o}{=} \PY{n}{A}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{float}\PY{p}{)} \PY{o}{/} \PY{n}{A}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{keepdims}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{cm}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plot\PYZus{}confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{cm}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Confusion matrix, without normalization
+[[ 0.88  0.11  0.01  0.  ]
+ [ 0.15  0.76  0.05  0.04]
+ [ 0.03  0.27  0.35  0.34]
+ [ 0.04  0.1   0.14  0.72]]
+    \end{Verbatim}
+
+    
+    \begin{verbatim}
+<matplotlib.figure.Figure at 0x18b410d0>
+    \end{verbatim}
+
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_110_2.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \section{Conclusion}\label{conclusion}
+
+    
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
