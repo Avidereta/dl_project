@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related work}{}% 2
+\BOOKMARK [1][-]{section.3}{Problem setting}{}% 3
+\BOOKMARK [1][-]{section.4}{Training set preparation}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{RoI selection}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Exluding Road}{section.4}% 6
+\BOOKMARK [1][-]{section.5}{Features as CNN output}{}% 7
+\BOOKMARK [1][-]{section.6}{Classification}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Binary classification}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Multi-class}{section.6}% 10
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Simple models}{subsection.6.2}% 11
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Boosting}{subsection.6.2}% 12
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Stacking}{subsection.6.2}% 13
+\BOOKMARK [3][-]{subsubsection.6.2.4}{With the road + segmentation}{subsection.6.2}% 14
+\BOOKMARK [3][-]{subsubsection.6.2.5}{Road deleted + segmentation}{subsection.6.2}% 15
+\BOOKMARK [3][-]{subsubsection.6.2.6}{Extra train dataset}{subsection.6.2}% 16
+\BOOKMARK [2][-]{subsection.6.3}{ANN}{section.6}% 17
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Network deleted road, classes}{subsection.6.3}% 18
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Network with road, 4 classes}{subsection.6.3}% 19
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Network deleted road, 4 classes, stacked with segs}{subsection.6.3}% 20
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Network with road, 4 classes, stacked with segs}{subsection.6.3}% 21
+\BOOKMARK [1][-]{section.7}{Results}{}% 22

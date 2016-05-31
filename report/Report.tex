@@ -280,7 +280,7 @@ parameters are neccessary for depth map building.
 
     \begin{figure}[htbp]
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/disparity_scheme.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/pic.png}
     \end{center}
 \caption{}
 \end{figure}
@@ -305,7 +305,7 @@ perspective, local refinements are made by fine-scale network.
 
     \begin{figure}[htbp]
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/network_structure.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/struct.png}
     \end{center}
 \caption{}
 \end{figure}
@@ -1939,13 +1939,56 @@ Confusion matrix, without normalization
 
     
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_110_2.pdf}
+    \adjustimage{max \section{Individual contribution} 
+\begin{itemize} 
+\item Data preparation: Anastasia Makarova and others 
+\item ML, Classifiers: Mikhail Karasikov 
+\item External segmentation with SegNet and ANN training: Mikhail Usvyatsov 
+\item All the other staff: All together
+\end{itemize}size={0.9\linewidth}{0.9\paperheight}}{Report_files/Report_110_2.pdf}
     \end{center}
     { \hspace*{\fill} \\}
     
     \section{Conclusion}\label{conclusion}
 
-    
+   While working on the project we:
+	
+	\begin{itemize}
+		\item Accomplished Data Processing included segmentation (SegNet) and disparity map building (SGBM), noise reduction
+		\item Developed and Experimented with Classifier based on features extracted from VGG19
+ 
+	\end{itemize}
+	 From the confusion matrix it can be seen, that there are quite good results for the most interesting for us area (very close). 
+	Results:
+	
+	\begin{table}
+\begin{tabular}{|l|l|l|l|l|} 
+\hline 
+\textbf{Segmentation }& \multicolumn{2}{c|}{+} & \multicolumn{2}{c|}{-} \\
+\hline 
+\textbf{Road} & \multicolumn{1}{c|}{+} & - & + & - \\ 
+\hline 
+Neural Network & 66.8\% & NA & \textbf{67.7\%} & 66.7\% \\ 
+\hline 
+Logistic Regression & 67.6\% & 66.6\% & NA & \textbf{68.0\%} \\ 
+\hline 
+Normalization + LogReg & \textbf{67.7\%} & NA & NA & 67.0\% \\ 
+\hline 
+Linear SVC & 67.6\% & NA & NA & 67.0\% \\ 
+\hline 
+PCA + SGB & 58.8\% & NA & 59.7\% & NA \\ 
+\hline 
+\end{tabular}
+\end{table}
+
+
+\section{Individual contribution} 
+\begin{itemize} 
+\item Data preparation: Anastasia Makarova and others 
+\item ML, Classifiers: Mikhail Karasikov 
+\item External segmentation with SegNet and ANN training: Mikhail Usvyatsov 
+\item All the other staff: All together
+\end{itemize}
 
 
     % Add a bibliography block to the postdoc
