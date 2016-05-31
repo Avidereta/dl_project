@@ -10,11 +10,14 @@ import json
 import itertools
 from collections import defaultdict
 import unittest
-#from matplotlib import pyplot as plt
 from scipy.misc import imread, imresize
 from multiprocessing import Pool
 
 from path_constants import CITYSCAPESPATH
+
+import matplotlib
+matplotlib.use("Pdf")
+from matplotlib import pyplot as plt
 
 
 def get_cities(img_dir='disparity', modes=['train', 'test', 'val']):
